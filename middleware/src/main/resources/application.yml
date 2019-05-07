@@ -41,18 +41,18 @@ vivo:
   triplestore:
     type: SDB
     #directory: triplestore
-    datasourceUrl: jdbc:mysql://localhost:3333/new_dev_vivo?useUnicode=true&characterEncoding=utf-8 
+    datasourceUrl: jdbc:mysql://mariadb:3306/new_dev_vivo?useUnicode=true&characterEncoding=utf-8 
     #datasourceUrl: jdbc:mysql://localhost/vivo?useLegacyDatetimeCode=false&serverTimezone=America/Chicago
-    username:
-    password:
-
+    username: vivodev
+    password: local_vivo_work
+ 
 logging:
   file: scholars.log
   level:
     edu:
       tamu:
         scholars:
-          middleware: INFO
+          middleware: DEBUG
     org:
       springframework:
         security: INFO
