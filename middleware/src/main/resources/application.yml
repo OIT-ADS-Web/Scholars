@@ -28,7 +28,7 @@ middleware:
     batchSize: 1000000
 
 ui:
-  url: http://localhost:4000
+  url: http://localhost:3000
 
 vivo:
   email: vivo_root@duke.edu
@@ -39,8 +39,8 @@ vivo:
   list-rdf-endpoint: /listrdf
   sparql-query-endpoint: /api/sparqlQuery
   triplestore:
-    type: TDB
-    directory: triplestore
+    type: SDB
+    #directory: triplestore
     datasourceUrl: jdbc:mysql://localhost:3333/new_dev_vivo?useUnicode=true&characterEncoding=utf-8 
     #datasourceUrl: jdbc:mysql://localhost/vivo?useLegacyDatetimeCode=false&serverTimezone=America/Chicago
     username:
