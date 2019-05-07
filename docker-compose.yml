@@ -1,0 +1,23 @@
+version: '3'
+services:
+  solr:
+    build: ./solr 
+    ports:
+    - "8983:8983"
+  middleware:
+    build: ./middleware
+    volumes:
+     - ./middleware:/app
+     #https://github.com/chanezon/docker-tips/blob/master/java-build-mount-maven-repo.md
+     - $HOME/.m2:/root/.m2
+    command: ["mvn", "spring-boot:run"]
+    ports:
+     - "4000:9000"
+    links:
+     - solr
+    #ENTRYPOINT ["mvn","spring-boot:run"]
+  
+  # usage:
+  # docker-compose build middleware
+  # docker-compose run middleware bash
+  # docker-compose up

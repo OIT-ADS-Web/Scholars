@@ -2,7 +2,7 @@ middleware:
   load-defaults: true
   update-defaults: true
   allowed-origins:
-  - http://localhost:4200
+  - http://localhost:4000
   auth:
     password:
       duration: 180
@@ -28,19 +28,21 @@ middleware:
     batchSize: 1000000
 
 ui:
-  url: http://localhost:4200
+  url: http://localhost:4000
 
 vivo:
-  email: vivo_root@school.edu
-  password:
-  base-url: http://localhost:8080/vivo
+  email: vivo_root@duke.edu
+  password: viva!vivo
+  #base-url: http://localhost:8080/vivo
+  base-url: http://localhost:9080
   linked-open-data-endpoint: /individual
   list-rdf-endpoint: /listrdf
   sparql-query-endpoint: /api/sparqlQuery
   triplestore:
     type: TDB
     directory: triplestore
-    datasourceUrl: jdbc:mysql://localhost/vivo?useLegacyDatetimeCode=false&serverTimezone=America/Chicago
+    datasourceUrl: jdbc:mysql://localhost:3333/new_dev_vivo?useUnicode=true&characterEncoding=utf-8 
+    #datasourceUrl: jdbc:mysql://localhost/vivo?useLegacyDatetimeCode=false&serverTimezone=America/Chicago
     username:
     password:
 
@@ -70,7 +72,7 @@ spring:
       return-body-on-create: true
       return-body-on-update: true
     solr:
-      host: http://localhost:8983/solr
+      host: http://solr:8983/solr
       operator: AND
       parser: edismax
     # NOTE: this does not work yet, https://jira.spring.io/browse/DATAREST-1290
@@ -86,7 +88,7 @@ spring:
   devtools:
     add-properties: false
     restart:
-      enabled: false
+      enabled: true
       exclude: target
   h2:
     console:
