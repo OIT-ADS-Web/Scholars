@@ -38,7 +38,8 @@ public class VivoIndexService {
     @PostConstruct
     public void indexOnStartup() {
         if (indexOnStartup) {
-            CompletableFuture.runAsync(() -> index());
+            index();
+            //CompletableFuture.runAsync(() -> index());
         }
     }
 
