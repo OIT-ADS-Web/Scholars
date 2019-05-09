@@ -7,12 +7,14 @@ services:
   middleware:
     build: ./middleware
     volumes:
+     # NOTE: don't actually know where to map volume
+     # - solr_data:/opt/solr/server/solr:z
      - ./middleware:/app
      #https://github.com/chanezon/docker-tips/blob/master/java-build-mount-maven-repo.md
      - $HOME/.m2:/root/.m2
     command: ["mvn", "spring-boot:run"]
     ports:
-     - "4000:9000"
+     - "9000:9000"
     links:
      - solr
      - mariadb
@@ -25,9 +27,15 @@ services:
       - MYSQL_USER=vivodev
       - MYSQL_PASSWORD=local_vivo_work
       - MYSQL_DATABASE=new_dev_vivo
-    volumes:  # Mount relative path source folder on host to path docker container
+    volumes:
+      # NOTE: don't actually know where to map volume
+      # - mariadb_data:/var/lib/mysql:z
       - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+  #volumes:
+  #  solr_data:
+  #  mariadb_data:
 
   # usage:
   # docker-compose build middleware
