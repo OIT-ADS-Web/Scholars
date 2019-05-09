@@ -4,12 +4,14 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import edu.tamu.scholars.middleware.discovery.model.Person;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.solr.repository.Query;
 
 @RepositoryRestResource
 public interface PersonRepo extends SolrDocumentRepo<Person> {
 
-  // throw away method - testing as a proof of concept
-  List<Person> findByFirstName(String firstName);
+  @Query("*?0*")
+  public Page<Person> findByCustomQuery(String query, Pageable pageable);
 
 }

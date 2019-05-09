@@ -4,5 +4,5 @@ type Person {
 }
 
 type Query {
-    listPersons: [Person]!
+    searchPeople(query: String): [Person]!
 }
