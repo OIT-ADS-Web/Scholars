@@ -15,11 +15,8 @@ public class PersonQuery implements GraphQLQueryResolver {
   private PersonRepo personRepo;
 
   public List<Person> listPersons() {
-    return personRepo.findByType("person");
+    return personRepo.findByType("FacultyMember");
   }
 
-  public List<Person> findByFirstName(String firstName) {
-    return personRepo.findByFirstName(firstName);
-  }
 }
 
