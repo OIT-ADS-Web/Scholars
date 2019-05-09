@@ -1,0 +1,9 @@
+type Person {
+    id: ID!
+    firstName: String!
+}
+
+type Query {
+    listPersons: [Person]!
+    findByFirstName(firstName: String): [Person]!
+}
