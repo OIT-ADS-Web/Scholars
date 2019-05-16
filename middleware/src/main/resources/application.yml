@@ -24,7 +24,7 @@ middleware:
   index:
     cron: 0 0 0 * * SUN
     zone: America/Chicago
-    onStartup: true
+    onStartup: false
     batchSize: 1000000
 
 ui:
