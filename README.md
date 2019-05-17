@@ -15,3 +15,21 @@ This replacement front end is based on <a href="https://lucene.apache.org/solr/"
 </ul>
 
 TAMULib Scholars currently harvest directly from VIVO’s triple store and for each high level model in VIVO there is a Solr collection and each of its document properties are populated from parsing response of a SparQL query in which isolates the desired value. We are using Spring Apache Solr with explicit Java models representing a Solr document and utilize the provided implementation of a CRUD repository of the Solr documents.  At runtime each Solr collection can be initiated and re-indexed if needed to dynamically pick up new fields added to VIVO’s triple store.
+
+
+# Docker Setup:
+
+This project uses Docker version 18.09.2 in order to use docker-compose version 3. Once you've installed it, it requires minimal work to get
+started. 
+
+Please, this set up uses solr 7.7.1 because the existing jars work with that version of solr.
+
+Once, you have above Docker version installed, you just have to run 'docker-compose up' in order to get started.
+ 
+Currently, middleware --> index --> onStartup = 'true' in application.yml, which means it will index all the data when you first start 'docker-compose up' and indexing take little while to complete.
+
+The recommended way is to have middleware --> index --> onStartup = 'false' so you will be able to visit all the pages but there will be no data. 
+
+Currently, all maven libraries and data will be cached so taking docker containers down will keep this cache so next time it does not need to load anything.
+
+In the future, we want to map the code base with volume mounts in docker compose so any code changes does not need restart of docker-compose.
